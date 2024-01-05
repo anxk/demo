@@ -2,12 +2,14 @@
 
 ## 周边工具
 - helm
+- k9s
 
 ## 插件
 - istio
 - kube-virt
-- kube-edge
+- superedge
 - cilium
+- calico
 - envoy
 - traefik
 
@@ -19,11 +21,14 @@
 - csi
 - cri
 - oam
+- kubevale
 
 ## 类似K8S的产品
 - k3s
+- k3d
 - rancher
 - kind
 - minikube
 - kube-sphere
+- kubeadmin
 

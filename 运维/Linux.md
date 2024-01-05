@@ -20,6 +20,10 @@ Z: defunct ("zombie") process, terminated but not - reaped by its parent
 ## 命令行工具
 - hcache 查看cache 
 - openssh/openssl
+- atopd, bcc, ftrace, trace-cmd, iostat, dstat, iotop, netstat, sar, iftop
+- dig/nslookup
+- ls*命令
+- nsenter
 
 ## 扩展
 - ebpf（bcc-tool/cilium）
@@ -30,6 +34,11 @@ Z: defunct ("zombie") process, terminated but not - reaped by its parent
 
 ## 工具
 - SystemTap
+- qemu, kvm, vitualbox, libvirt, openstack
+- lvm
+- chaosblade
+- atop
+- rsyslogd
 
 ## 性能调优
 - sysctl (/etc/sysctl.d/)
