@@ -1,13 +1,29 @@
-# k8s
+# K8S
 
-## 工具
-- istio / kube-virt / envoy /cilium
-- k3s / rancher / kind / minikube / kube-sphere / kata-containers
+## 周边工具
 - helm
+
+## 插件
+- istio
+- kube-virt
+- kube-edge
+- cilium
+- envoy
 - traefik
-- oam
 
 ## 扩展
 - kubectl-plugins
-- kube-builder
+- kube-builder CRD框架
 - webhook
+- cni
+- csi
+- cri
+- oam
+
+## 类似K8S的产品
+- k3s
+- rancher
+- kind
+- minikube
+- kube-sphere
+
