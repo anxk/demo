@@ -3,6 +3,7 @@
 ## 周边工具
 - helm
 - k9s
+- kustomize
 
 ## 插件
 - istio

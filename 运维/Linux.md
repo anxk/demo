@@ -24,6 +24,11 @@ Z: defunct ("zombie") process, terminated but not - reaped by its parent
 - dig/nslookup
 - ls*命令
 - nsenter
+- strace
+- strings
+- ssh
+- nmap
+- make
 
 ## 扩展
 - ebpf（bcc-tool/cilium）
