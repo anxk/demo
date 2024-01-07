@@ -1,5 +1,14 @@
 # K8S
 
+## 核心组件
+- kube-apiserver
+- etcd
+- kube-controller-manager
+- kube-scheduler
+- kubelet
+- kube-proxy
+- docker
+
 ## 周边工具
 - helm
 - k9s

@@ -44,13 +44,33 @@ Z: defunct ("zombie") process, terminated but not - reaped by its parent
 - chaosblade
 - atop
 - rsyslogd
+- chronyd
+- ntp
+- auditd
 
 ## 性能调优
 - sysctl (/etc/sysctl.d/)
 - ulimit (系统层面/进程层面cat /proc/PID/limits)
+- https://github.com/zeushammer/Preformance-Tune-Linux
+- nfs tune
+- http://www.admin-magazine.com/HPC/Articles/Useful-NFS-Options-for-Tuning-and-Management
+- https://www.slashroot.in/how-do-linux-nfs-performance-tuning-and-optimization
+- https://www.slashroot.in/linux-nfs-network-file-system-client-and-server-complete-guide
+- https://www.slashroot.in/linux-file-system-read-write-performance-test
+- https://www.cyberciti.biz/faq/linux-unix-tuning-nfs-server-client-performance/
+- https://docs.microsoft.com/en-us/windows-server/administration/performance-tuning/role/file-server/nfs-file-server
+- https://docs.oracle.com/cd/E19620-01/805-4448/index.html
+- https://www.ibm.com/support/knowledgecenter/en/ssw_aix_71/com.ibm.aix.performance/nfs_tuning_client.htm
+- http://blog.chinaunix.net/uid-70565-id-2070512.html
 
 ## 技巧
 - 清理cache /proc/sys/vm/drop_caches
 - 查看/proc/net/nf_conntrack
 - 查看进程内存 /proc/PID/maps
 - 使用gdb可以讲进程某段地址内存dump出来 
+- 利用 {} 的 expand 特性建文件夹：mkdir -pv /tmp/test_mkdir/{boot,root,etc,bin,sbin,lib,var,tmp,usr/{bin,etc,include,lib,local,sbin,share,share,src}}
+- ll /dev 可看主次设备号
+- mount -o loop 挂载环回设备
+- sr0 是 CD-ROM 设备
+- :(){ :: & };: Fork Bomb
+- 查看 selinux 状态，sestatus 或 getenforce，临时关闭 setenforce 0，恢复 setenforce 1，永久修改 selinux 要配置 /etc/selinux/config
