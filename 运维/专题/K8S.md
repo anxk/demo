@@ -25,7 +25,7 @@
 
 ## 扩展
 - kubectl-plugins
-- kube-builder CRD框架
+- kube-builder CRD 框架
 - webhook
 - cni
 - csi

@@ -6,7 +6,7 @@ nginx 可执行文件，nginx.conf 配置文件，access.log 访问日志，erro
 ## 介绍一下 nginx
 nginx，是一个 Web 服务器和反向代理服务器，用于 HTTP、HTTPS、SMTP、POP3、IMAP 等协议，nginx 的主要功能有 Web 服务器、反向代理、实现负载均衡、虚拟主机
 
-## nginx 日志格式中的 $time_local 表示的是什么时间？请求开始的时间？请求结束的时间？
+## nginx 日志格式中的 $time_local 表示的是什么时间？请求开始的时间？请求结束的时间
 $time_local 指的是请求开始的服务器本地时间
 
 ## nginx 优点有哪些
@@ -38,7 +38,7 @@ C10K 问题是指无法同时处理大量客户端(10,000)的网络套接字
 在编译过程中，必须选择 nginx 模块，因为 nginx 不支持模块的运行时选择
 
 ## 在 nginx 中，如何在 URL 中保留双斜线
-要在URL中保留双斜线，就必须使用merge_slashes_off;
+要在 URL 中保留双斜线，就必须使用 merge_slashes_off;
 语法：merge_slashes [on/off]
 默认值：merge_slashes on
 
