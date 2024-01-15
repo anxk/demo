@@ -11,7 +11,7 @@ MyISAM 采用表级锁(table-level locking)，InnoDB支持行级锁(row-level lo
 行级锁是 MySQL 中锁定粒度最小的一种锁，只针对当前操作的行进行加锁，行级锁能大大减少数据库操作的冲突，其加锁粒度最小，并发度高，
 但加锁的开销也最大，加锁慢，会出现死锁。
 
-## InnoDB存储引擎的行级锁的算法有三种
+## InnoDB 存储引擎的行级锁的算法有三种
 - Record lock：单个行记录上的锁；
 - Gap lock：间隙锁，锁定一个范围，不包括记录本身；
 - Next-key lock：record+gap锁定一个范围，包含记录本身；
