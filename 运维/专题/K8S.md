@@ -33,7 +33,7 @@
 - oam
 - kubevale
 
-## 类似K8S的产品
+## 类似 K8S 的产品
 - k3s
 - k3d
 - rancher
