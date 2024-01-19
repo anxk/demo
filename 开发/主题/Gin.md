@@ -10,11 +10,11 @@ Gin 框架中的路由使用的是 [httprouer](https://github.com/julienschmidt/
 
 普通路由和分组路由。
 
-## Gin 中间件
+## 中间件
 
 ### 简单描述一下中间件？
 
-Gin 框架允许开发者在处理请求的过程中，加入用户自己的钩子（Hook）函数。这个钩子函数就叫中间件，中间件适合处理一些公共的业务逻辑，比如登录校验、日志打印、耗时统计等。
+Gin 框架允许开发者在处理请求的过程中，加入用户自己的钩子（Hook）函数。这个钩子函数就叫中间件，中间件适合处理一些公共的业务逻辑，比如登录校验、日志打印、耗时统计等。（责任链模式）
 
 ### 中间件分为哪几种？
 
@@ -22,16 +22,16 @@ Gin 框架允许开发者在处理请求的过程中，加入用户自己的钩�
 
 ## 快问快答
 
-### Gin 框架中怎么实现 参数校验？
+### Gin 框架中怎么实现参数校验？
 
 在 struct 结构体 添加 `binding` 标签，然后调用 `ShouldBing` 方法解析参数。
 
-### Gin框架 响应请求方式有哪几种？
+### Gin 框架响应请求方式有哪几种？
 
-- 字符串方式:  `c.String(http.StatusOK, "hello world")` 
-- json 格式:  `c.JSON(http.StatusOK, gin.H{ })`
+- 字符串:  `c.String(http.StatusOK, "hello world")` 
+- JSON 格式:  `c.JSON(http.StatusOK, gin.H{})`
 
-### Gin框架 中 Gin.H 代表什么意思？
+### Gin 框架中 Gin.H 代表什么意思？
 
-`gin.H` 实际上就是 `map[string]interface{}`。引入 gin.H 可以简化生成 json 的方式，gin.H 可以 嵌套使用。
+`gin.H` 实际上就是 `map[string]interface{}`，引入 gin.H 可以简化生成 JSON 的方式，gin.H 可以嵌套使用。
 

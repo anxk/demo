@@ -1,13 +1,7 @@
 # Prometheus
 
-## 相关工具
-- Prometheus
-- AlertManager(Gossip协议)
-- PushGateway
-- NodeExporter
-- Grafana
+## 组件集
+Prometheus、AlertManager(Gossip协议)、PushGateway、NodeExporter、Grafana
 
-## 生态
-- Kube-Prometheus
-- Thanos
-- Cortex
+## 开源方案
+Kube-Prometheus、Thanos、Cortex

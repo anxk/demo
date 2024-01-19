@@ -1,44 +1,16 @@
 # K8S
 
 ## 核心组件
-- kube-apiserver
-- etcd
-- kube-controller-manager
-- kube-scheduler
-- kubelet
-- kube-proxy
-- docker
+kube-apiserver、etcd、kube-controller-manager、kube-scheduler、kubelet、kube-proxy、docker
 
-## 周边工具
-- helm
-- k9s
-- kustomize
+## 辅助工具
+kubectl、helm、k9s、kustomize、kubeadmin
 
-## 插件
-- istio
-- kube-virt
-- superedge
-- cilium
-- calico
-- envoy
-- traefik
+## 重要插件
+istio、kube-virt、superedge、cilium、calico、envoy、traefik
 
-## 扩展
-- kubectl-plugins
-- kube-builder CRD 框架
-- webhook
-- cni
-- csi
-- cri
-- oam
-- kubevale
+## 扩展开发
+kubectl-plugins、kube-builder CRD 框架、webhook、cni、csi、cri、oam、kubevale
 
-## 类似 K8S 的产品
-- k3s
-- k3d
-- rancher
-- kind
-- minikube
-- kube-sphere
-- kubeadmin
-
+## 类似产品
+k3s、k3d、rancher、kind、minikube、kube-sphere

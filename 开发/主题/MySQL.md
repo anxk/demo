@@ -1,8 +1,6 @@
 # MySQL
 
-## 命令
-
-### 一些常用命令
+## 常用命令
 
 ```shell script
 # 启动和关闭 MySQL

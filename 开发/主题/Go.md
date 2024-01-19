@@ -33,7 +33,7 @@
 
 ### STW（Stop The World）
 
-- 为了避免在 GC 的过程中，对象之间的引用关系发生新的**变更**，使得 GC 的结果发生错误（如GC过程中新增了一个引用，但是由于未扫描到该引用导致将被引用的对象清除了），停止所有正在运行的协程。
+- 为了避免在 GC 的过程中，对象之间的引用关系发生新的**变更**，使得 GC 的结果发生错误（如 GC 过程中新增了一个引用，但是由于未扫描到该引用导致将被引用的对象清除了），停止所有正在运行的协程。
 - STW 对性能有一些影响，Go 目前已经可以做到 1ms 以下的 STW。
 
 ### 写屏障（Write Barrier）
@@ -81,7 +81,7 @@ CSP 模型是“以通信的方式来共享内存”，不同于传统的多线�
 
 - G（Goroutine）： 即 Go 协程，每个 go 关键字都会创建一个协程。
 - M（Machine）：工作线程，在 Go 中称为 Machine，数量对应真实的 CPU 数（真正干活的对象）。
-- P（Processor）： 处理器（Go中定义的一个摡念，非 CPU），包含运行 Go 代码的**必要资源**，用来调度 G 和 M 之间的关联关系，其数量可通过 `GOMAXPROCS()` 来设置，默认为核心数。
+- P（Processor）： 处理器（Go中定义的一个摡念，非 CPU），**包含运行 Go 代码的必要资源**，用来调度 G 和 M 之间的关联关系，其数量可通过 `GOMAXPROCS()` 来设置，默认为核心数。
 
 M 必须拥有 P 才可以执行 G 中的代码，P 含有一个包含多个 G 的队列，P 可以调度 G 交由 M 执行。
 
@@ -89,7 +89,7 @@ M 必须拥有 P 才可以执行 G 中的代码，P 含有一个包含多个 G �
 
 - 队列轮转：P 会周期性的将 G 调度到 M 中执行，执行一段时间后，保存上下文，将 G 放到队列尾部，然后从队列中再取出一个 G 进行调度。除此之外，P 还会周期性的查看全局队列是否有 G 等待调度到 M 中执行。
 - 系统调用：当 G0 即将进入系统调用时，M0 将释放 P，进而某个空闲的 M1 获取 P，继续执行 P 队列中剩下的 G。M1 的来源有可能是 M 的缓存池，也可能是新建的。
-  当 G0 系统调用结束后，如果有空闲的 P，则获取一个 P，继续执行 G0。如果没有，则将 G0 放入全局队列，等待被其他的 P 调度。然后 M0 将进入缓存池睡眠。
+  当 G0 系统调用结束后，如果有空闲的 P，则获取一个 P，继续执行 G0。如果没有，则将 G0 放入全局队列，等待被其他的 P 调度。然后 M0 将进入**缓存池**睡眠。
 
   ![img](./assets/6b9f26ef7f424ff4b6971448a168b132tplv-k3u1fbpfcp-zoom-in-crop-mark1512000.webp)
 
@@ -234,7 +234,7 @@ channel 可以理解是一个先进先出的队列，通过管道进行通信，
 
 ### channel 是同步的还是异步的？
 
-channel 是异步进行的， channel 存在3种状态：
+channel 是异步进行的， channel 存在 3 种状态：
 
 - nil，未初始化的状态，只进行了声明，或者手动赋值为 nil
 - active，正常的 channel，可读或者可写
@@ -251,9 +251,9 @@ channel 是异步进行的， channel 存在3种状态：
 - 一个线程可以有多个协程。
 - 线程、进程都是同步机制，而协程是异步。
 - 协程可以保留上一次调用时的状态，当过程重入时，相当于进入了上一次的调用状态。
-- 协程是需要线程来承载运行的，所以协程并不能取代线程，线程是被分割的CPU资源，协程是组织好的代码流程。
+- 协程是需要线程来承载运行的，所以协程并不能取代线程，线程是被分割的 CPU 资源，协程是组织好的代码流程。
 
-### Go 的 Struct能不能比较？
+### Go 的 struct能不能比较？
 
 - 相同 struct 类型的可以比较。
 - 不同 struct 类型的不可以比较，编译都不过，类型不匹配。
@@ -262,7 +262,25 @@ channel 是异步进行的， channel 存在3种状态：
 
 使用 `sync.WaitGroup`。`WaitGroup`，就是用来等待一组操作完成的。`WaitGroup` 内部实现了一个计数器，用来记录未完成的操作个数。`Add()` 用来添加计数，`Done()` 用来在操作结束时调用，使计数减一，`Wait()` 用来等待所有的操作结束，即计数变为 0，该函数会在计数不为 0 时等待，在计数为 0 时立即返回。
 
-### Go 的 Slice 如何扩容？
+```go
+func TestWaitgroup(t *testing.T) {
+   var wg sync.WaitGroup
+   wg.Add(2)
+   go func() {
+      sendHttpRequest("https://baidu.com")
+      wg.Done()
+   }()
+   go func() {
+      sendHttpRequest("https://baidu.com")
+      wg.Done()
+   }()
+   wg.Wait()
+}
+```
+
+
+
+### Go 的 slice 如何扩容？
 
 在使用 append 向 slice 追加元素时，若 slice 空间不足则会发生扩容，扩容会重新分配一块更大的内存，将原 slice 拷贝到新 slice ，然后返回新 slice，扩容后再将数据追加进去。
 
@@ -297,7 +315,7 @@ Go 中 map 如果要实现顺序读取的话，可以先把 map 中的 key，通
 
 Goroutine 需要维护执行用户代码的上下文信息，在运行过程中需要消耗一定的内存来保存这类信息，如果一个程序持续不断地产生新的 goroutine，且不结束已经创建的 goroutine 并复用这部分内存，就会造成内存泄漏的现象。
 
-### Goroutine发生了泄漏如何检测？
+### Goroutine 发生了泄漏如何检测？
 
 可以通过 Go 自带的工具 pprof 或者使用 Gops 去检测诊断当前在系统上运行的 Go 程的占用的资源。
 
@@ -305,7 +323,7 @@ Goroutine 需要维护执行用户代码的上下文信息，在运行过程中�
 
 Go中两个 Nil 可能不相等。
 
-接口(interface) 是对非接口值(例如指针，struct 等)的封装，内部实现包含 2 个字段，类型 T 和 值 V。一个接口等于 nil，当且仅当 T 和 V 处于 unset 状态（T=nil, V is unset）。
+接口(interface) 是对非接口值(例如指针，struct 等)的封装，内部实现包含 2 个字段，类型 T 和 值 V。**一个接口等于 nil，当且仅当 T 和 V 处于 unset 状态（T=nil, V is unset）**。
 两个接口值比较时，会先比较 T，再比较 V。 接口值与非接口值比较时，会先将非接口值尝试转换为接口值，再比较。
 
 ```go
@@ -325,7 +343,7 @@ func main() {
 
 ### Go语言中的内存对齐了解吗？
 
-CPU 访问内存时，并不是逐个字节访问，而是以字长（word size）为单位访问，比如 32 位的 CPU ，字长为 4 字节，那么 CPU 访问内存的单位也是 4 字节。
+CPU 访问内存时，并不是逐个字节访问，而是以**字长（word size）**为单位访问，比如 32 位的 CPU ，字长为 4 字节，那么 CPU 访问内存的单位也是 4 字节。
 CPU 始终以字长访问内存，如果不进行内存对齐，很可能增加 CPU 访问内存的次数，例如：
 
 <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6980893261734ba383e1e702c9723100~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img" style="zoom:80%;" />
@@ -427,8 +445,7 @@ Go 中解析的 tag 是通过反射实现的，反射是指计算机程序在运
 
 ### 25个关键字
 
-break, case, chan, const, continue, default, defer, else, fallthrough, for, func, go, goto, if, import, interface, 
-map, package, range, return, select, struct, switch, type, var
+break, case, chan, const, continue, default, defer, else, fallthrough, for, func, go, goto, if, import, interface, map, package, range, return, select, struct, switch, type, var
 
 ### 基础问题
 
