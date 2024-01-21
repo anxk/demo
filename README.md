@@ -1,7 +1,2 @@
 # demo
 
-# TODO
-
-Redis
-
-Zookeeper

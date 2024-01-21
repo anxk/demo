@@ -20,18 +20,18 @@ Gin 框架允许开发者在处理请求的过程中，加入用户自己的钩�
 
 中间件可以注册为全局的，也可以注册为单个路由或者路由组的。
 
-## 快问快答
+## 使用细节
 
 ### Gin 框架中怎么实现参数校验？
 
-在 struct 结构体 添加 `binding` 标签，然后调用 `ShouldBing` 方法解析参数。
+在 `struct` 结构体 添加 `binding` 标签，然后调用 `ShouldBind` 方法解析参数。
 
 ### Gin 框架响应请求方式有哪几种？
 
 - 字符串:  `c.String(http.StatusOK, "hello world")` 
 - JSON 格式:  `c.JSON(http.StatusOK, gin.H{})`
 
-### Gin 框架中 Gin.H 代表什么意思？
+### Gin 框架中 `Gin.H` 代表什么意思？
 
-`gin.H` 实际上就是 `map[string]interface{}`，引入 gin.H 可以简化生成 JSON 的方式，gin.H 可以嵌套使用。
+`gin.H` 实际上就是 `map[string]interface{}`，引入 `gin.H` 可以简化生成 JSON 的方式，`gin.H` 可以嵌套使用。
 
